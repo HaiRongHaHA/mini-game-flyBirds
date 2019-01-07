@@ -32,7 +32,6 @@ export class Sprite {
   }
   draw(){
     this.ctx.drawImage(
-      this.ctx,
       this.img,
       this.srcX,
       this.srcY,
@@ -44,5 +43,4 @@ export class Sprite {
       this.height
     );
   }
-
 }

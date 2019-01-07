@@ -8,7 +8,7 @@ export class BackGround extends Sprite{
       0, 0,
       image.width, image.height,
       0, 0,
-      image.width, image.height
+      375, 667
       // canvas.width, canvas.height
     );
 
