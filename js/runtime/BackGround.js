@@ -1,15 +1,16 @@
 // 背景
-import { Sprite } from "../base/Sprite.js";
+import { Sprite } from "./../base/Sprite.js";
+import { DataStore } from "./../base/DataStore.js";
 
 export class BackGround extends Sprite{
 
-  constructor(ctx, image) {
-    super(ctx, image,
+  constructor() {
+    const image = Sprite.getImage('background');
+    super(image,
       0, 0,
       image.width, image.height,
       0, 0,
-      375, 667
-      // canvas.width, canvas.height
+      DataStore.getInstance().ctx.canvas.width, DataStore.getInstance().ctx.canvas.height
     );
 
   }

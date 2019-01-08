@@ -9,9 +9,13 @@ export class DataStore {
 
   constructor(){
     this.map = new Map();
-  }
+    this.moveSpeed = 2;
+  } 
 
   put(key,value){
+    if(typeof value === 'function'){
+      value = new value();
+    }
     this.map.set(key,value);
     return this;
   }
