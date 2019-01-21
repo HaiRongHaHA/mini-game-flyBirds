@@ -21,9 +21,10 @@ export class Director {
     const maxTop = this.dataStore.ctx.canvas.height / 2;
     const top = minTop + Math.random() * (maxTop - minTop);
     const randomColor = '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
+    const randomColor2 = '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
     // console.log(randomColor)
     this.dataStore.get('pencils').push(new UpPencil(randomColor, top));
-    this.dataStore.get('pencils').push(new DownPencil(randomColor, top));
+    this.dataStore.get('pencils').push(new DownPencil(randomColor2, top));
   }
 
   // 小鸟点击向上飞
@@ -33,15 +34,18 @@ export class Director {
     }
     this.dataStore.get('birds').time = 0;
   }
+
   // 判断小鸟是否和铅笔撞击
   static isStrike(bird, pencil){
     let s = false;
-    if (bird.top > pencil.bottom || bird.bottom < pencil.top 
-    || bird.right < pencil.left || bird.left > pencil.left){
+    if (bird.top > pencil.bottom || 
+        bird.bottom < pencil.top || 
+        bird.right < pencil.left || 
+        bird.left > pencil.right
+    ) {
       s = true;
     }
     return !s;
-
   }
 
   // 撞击地板或铅笔的音效

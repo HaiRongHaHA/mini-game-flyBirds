@@ -5,8 +5,8 @@ export class Pencil{
 
   constructor(color, top) {
     this.top = top;
-    this.pencilWidth = 50;
-    this.pencilHeight = 300;
+    this.pencilWidth = 54;
+    this.pencilHeight = 420;
     this.x = DataStore.getInstance().ctx.canvas.width;
     this.y = 0;
     this.moveSpeed = DataStore.getInstance().moveSpeed;

@@ -34,7 +34,7 @@ export class Main {
   }
 
   init(){
-    // this.createBackgroundMusic();
+    this.createBackgroundMusic();
     // 首先重置游戏是没有结束的
     this.director.isGameOver = false;
     // 公有页面元素数据
