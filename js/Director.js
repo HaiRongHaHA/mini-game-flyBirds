@@ -20,8 +20,12 @@ export class Director {
     const minTop = this.dataStore.ctx.canvas.height / 8;
     const maxTop = this.dataStore.ctx.canvas.height / 2;
     const top = minTop + Math.random() * (maxTop - minTop);
-    const randomColor = '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
-    const randomColor2 = '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
+    // 固定色值
+    const colorArray = ['#68c9bb', '#dea8c9', '#b2fad4', '#fbbcc1', '#ef8f65', '#e96f88', '#c5b5d0', '#d8e7f8', '#52dbcb'];
+    const randomColor = colorArray[Math.floor(Math.random() * colorArray.length)];
+    const randomColor2 = colorArray[Math.floor(Math.random() * colorArray.length)];
+    // const randomColor = '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
+    // const randomColor2 = '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16);
     // console.log(randomColor)
     this.dataStore.get('pencils').push(new UpPencil(randomColor, top));
     this.dataStore.get('pencils').push(new DownPencil(randomColor2, top));
@@ -38,10 +42,10 @@ export class Director {
   // 判断小鸟是否和铅笔撞击
   static isStrike(bird, pencil){
     let s = false;
-    if (bird.top > pencil.bottom || 
-        bird.bottom < pencil.top || 
-        bird.right < pencil.left || 
-        bird.left > pencil.right
+    if (bird.top >= pencil.bottom || 
+        bird.bottom <= pencil.top || 
+        bird.right <= pencil.left || 
+        bird.left >= pencil.right
     ) {
       s = true;
     }
@@ -62,7 +66,11 @@ export class Director {
     const pencils = this.dataStore.get('pencils');
     const score = this.dataStore.get('score');
     // 地板的撞击判断
-    if (birds.birdsY[0] + birds.birdsHeight[0] >= land.y){
+    // if (birds.birdsY[0] + birds.birdsHeight[0] >= land.y){
+    //小鸟落地撞击 
+    if (birds.birdsY[0] + birds.birdsHeight[0] >= 
+      this.dataStore.ctx.canvas.height - birds.birdsHeight[0] ) 
+    {
       this.deadMusic();
       this.isGameOver = true;
       return;
@@ -130,7 +138,7 @@ export class Director {
       });
 
       // 绘制陆地
-      this.dataStore.get('land').draw();
+      // this.dataStore.get('land').draw();
 
       // 记分器
       this.dataStore.get('score').draw();

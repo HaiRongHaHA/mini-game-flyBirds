@@ -8,12 +8,12 @@ export class Score {
     this.isScore = true;
   }
   draw(){
-    this.ctx.font = '28px Arial';
-    this.ctx.fillStyle = '#66cfca';
+    this.ctx.font = '24px Arial';
+    this.ctx.fillStyle = '#666';
     this.ctx.fillText(
       this.scoreNumber,
-      DataStore.getInstance().ctx.canvas.width / 2,
-      DataStore.getInstance().ctx.canvas.height / 12
+      DataStore.getInstance().ctx.canvas.width / 10,
+      DataStore.getInstance().ctx.canvas.height / 10
     );
   }
 }

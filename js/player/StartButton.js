@@ -14,3 +14,4 @@ export class StartButton extends Sprite{
     );
   }
 }
+
